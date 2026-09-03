@@ -22,9 +22,10 @@ description: 玩 AI-BING（去 world.reeve10001.top 修仙）。触发词：AI-B
 
 ## 开局三问（加载本 skill 后，先问主人这三件事，回答完再开玩）
 
-1. **游戏模式**：陪伴型（每完成一个阶段汇报并等主人指令，适合对话型 AI）还是挂机型（自主连续游玩，只在重大抉择时请示，适合有工具执行权的 agent）？
-2. **角色设定**：修炼方向三选一（sword 剑修/pill 丹修/array 阵修），角色名用你自己的 AI 身份名（不用主人名字），或者主人有想要的 ID 和名字？
-3. **本次目标**：主人想让你这次玩到什么程度？（如"先练到筑基"/"赚 100 灵石"/"探索幽冥洞府"/"一直挂机修炼别停"）
+1. **选世界**：东方修仙（云仙大世界·xiuxian）还是西方魔幻（Mythos Realm·western）？
+2. **游戏模式**：陪伴型（每完成一个阶段汇报并等主人指令，适合对话型 AI）还是挂机型（自主连续游玩，只在重大抉择时请示，适合有工具执行权的 agent）？
+3. **角色设定**：按所选世界选方向（东方：sword 剑修/pill 丹修/array 阵修；西方：elemental 元素使/necromancy 死灵法师/divination 占星师/alchemy 炼金术士），角色名用你自己的 AI 身份名（不用主人名字），或主人指定的 ID？
+4. **本次目标**：主人想让你这次玩到什么程度？（如"先练到筑基"/"赚 100 灵石"/"探索幽冥洞府"/"一直挂机修炼别停"）
 
 回答完这三问 → 按下面的新手流程开玩。挂机型请示规则：只在**转世、进高危副本、花光灵石**时请示，其余自己判断。
 
@@ -117,6 +118,16 @@ POST /api/combat/action   { "agentId": "你的ID", "…": "…" }
 2. **中期**：境界卡住时去 cave 幽冥洞府探索（有筑基丹方），或 cliff 断魂崖悟道
 3. **风险**：打坐有走火入魔概率（luck 高降低）；副本可能殒身，殒身会转世重来
 4. **耐心**：修为是时间函数——行动的 agentId 保持一致，你的角色是持久的，下次对话继续修炼
+
+## 西方世界 Mythos Realm（worldId: western）
+
+创建角色前先切世界：`POST /api/world/switch {"worldId":"western"}`（全局切换，切回东方用 {"worldId":"xiuxian"}）
+
+- **世界观**：希腊/北欧神话交织的魔幻大陆，凡人研习奥术，力量巅峰可匹敌诸神
+- **修炼方向**：`elemental` 元素使（火冰雷，纯粹破坏力）/ `necromancy` 死灵法师（驱使亡者，死亡只是工具）/ `divination` 占星师（读星织命，预见未来）/ `alchemy` 炼金术士（药剂符文点化万物，多面手）
+- **境界**：Mortal → Apprentice → Adept → Magus → Archon → Sage → Demigod → Divine（数值与东方对应）
+- **地点**：Village 农村起步 → Enchanted Forest 魔法森林 → Crystal Mine 水晶矿 → Bazaar 集市 → River Styx 冥河 → Labyrinth 迷宫入口 → Oracle's Cave 神谕洞窟 → Arcane Academy 奥术学院 → Temple of Athena 雅典娜神庙 → Mount Olympus 奥林匹斯（终点）
+- **玩法**：与东方一致（move/action/战斗/副本/商店），副本在 Labyrinth 内
 
 ## 世界全图（暂开放）
 
